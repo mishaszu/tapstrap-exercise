@@ -70,16 +70,15 @@ let make = () => {
   let (playArr, setPlayArr) = React.useState(_ => mappings)
   let (current, setCurrent) = React.useState(_ => None)
 
-  Js.log(current)
+  Js.log(playArr)
 
-  let keypress = React.useCallback4((e: Dom.keyboardEvent) => {
+  let keypress = React.useCallback2((e: Dom.keyboardEvent) => {
     let key = keyboardKey(e)
     let key = switch key {
     | " " => "space"
     | "Enter" => "enter"
     | v => v
     }
-
     if current == None && key == "space" {
       let currentIndex = getRandom(mappings->Js.Array2.length->Js.Int.toFloat)
       setCurrent(_ => Some(mappings->Js.Array2.unsafe_get(currentIndex)))
@@ -87,33 +86,24 @@ let make = () => {
     }
 
     switch current {
-    | Some(value)
-      if value.key == key ||
-      value.key == "space" && key == " " ||
-      (value.key == "enter" && key == "Enter") => {
-        let filteredArr = filterArray(playArr, key)
-
-        let removedValue = filteredArr->Js.Array2.find(value => value.key == key)
-
-        switch removedValue {
-        | Some(_) => {
-            Js.log3(`removed pressed ${key}`, `current value ${value.key}`, key == value.key)
-            Js.Exn.raiseError("element not removed!")
-          }
-        | None => ()
-        }
-
-        if filteredArr->Js.Array2.length == playArr->Js.Array2.length {
-          Js.Exn.raiseError("wront length!")
-        }
-
-        setPlayArr(_ => filteredArr)
-        let currentIndex = getRandom(filteredArr->Js.Array2.length->Js.Int.toFloat)
-        setCurrent(_ => Some(filteredArr->Js.Array2.unsafe_get(currentIndex)))
+    | Some(value) if value.key == "space" && key == " " => {
+        let currentIndex = getRandom(mappings->Js.Array2.length->Js.Int.toFloat)
+        setCurrent(_ => Some(mappings->Js.Array2.unsafe_get(currentIndex)))
+        setPlayArr(filterArray(_, key))
+      }
+    | Some(value) if value.key == "enter" && key == "Enter" => {
+        let currentIndex = getRandom(mappings->Js.Array2.length->Js.Int.toFloat)
+        setCurrent(_ => Some(mappings->Js.Array2.unsafe_get(currentIndex)))
+        setPlayArr(filterArray(_, key))
+      }
+    | Some(value) if value.key == key => {
+        let currentIndex = getRandom(mappings->Js.Array2.length->Js.Int.toFloat)
+        setCurrent(_ => Some(mappings->Js.Array2.unsafe_get(currentIndex)))
+        setPlayArr(filterArray(_, key))
       }
     | _ => Js.log("Not match!")
     }
-  }, (current, setCurrent, playArr, setPlayArr))
+  }, (current, playArr))
 
   React.useEffect1(() => {
     window->addEventListener("keydown", keypress)
@@ -129,7 +119,7 @@ let make = () => {
         | Some(value) =>
           <>
             <p className="mx-12"> {`${value.key}`->Js.String.toUpperCase->React.string} </p>
-            <Fingers value={value.pattern} />
+            <Fingers value={space.pattern} />
           </>
         | None =>
           <>

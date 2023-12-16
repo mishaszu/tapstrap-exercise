@@ -1,0 +1,268 @@
+[
+  {
+    "key": "a",
+    "code": 97,
+    "pattern": [1, 0, 0, 0, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "h",
+    "code": 104,
+    "pattern": [0, 1, 0, 0, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "j",
+    "code": 106,
+    "pattern": [0, 0, 1, 0, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "k",
+    "code": 107,
+    "pattern": [0, 0, 0, 1, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "l",
+    "code": 108,
+    "pattern": [1, 0, 0, 0, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "o",
+    "code": 111,
+    "pattern": [1, 1, 0, 0, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "i",
+    "code": 105,
+    "pattern": [0, 1, 1, 0, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "d",
+    "code": 100,
+    "pattern": [0, 0, 1, 1, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "s",
+    "code": 115,
+    "pattern": [0, 0, 0, 1, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "f",
+    "code": 102,
+    "pattern": [1, 0, 1, 0, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "t",
+    "code": 116,
+    "pattern": [0, 1, 0, 1, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "q",
+    "code": 113,
+    "pattern": [0, 0, 1, 0, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "n",
+    "code": 110,
+    "pattern": [1, 0, 0, 1, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "c",
+    "code": 99,
+    "pattern": [0, 1, 0, 0, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "y",
+    "code": 121,
+    "pattern": [1, 0, 0, 0, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "w",
+    "code": 119,
+    "pattern": [1, 0, 1, 0, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "u",
+    "code": 117,
+    "pattern": [0, 1, 1, 1, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "e",
+    "code": 101,
+    "pattern": [1, 0, 1, 1, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "v",
+    "code": 118,
+    "pattern": [1, 1, 0, 1, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "b",
+    "code": 98,
+    "pattern": [1, 1, 1, 0, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "r",
+    "code": 114,
+    "pattern": [1, 1, 1, 1, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "g",
+    "code": 103,
+    "pattern": [1, 0, 1, 1, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "x",
+    "code": 120,
+    "pattern": [0, 1, 0, 1, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "m",
+    "code": 109,
+    "pattern": [1, 1, 0, 1, 0],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "z",
+    "code": 122,
+    "pattern": [0, 1, 1, 0, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "enter",
+    "code": 13,
+    "pattern": [1, 0, 0, 1, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "p",
+    "code": 112,
+    "pattern": [1, 1, 0, 0, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "space",
+    "code": 32,
+    "pattern": [1, 1, 1, 1, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
+    "key": "1",
+    "code": 49,
+    "pattern": [1, 0, 0, 0, 0],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "2",
+    "code": 50,
+    "pattern": [0, 1, 0, 0, 0],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "3",
+    "code": 51,
+    "pattern": [0, 0, 1, 0, 0],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "4",
+    "code": 52,
+    "pattern": [0, 0, 0, 1, 0],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "5",
+    "code": 53,
+    "pattern": [0, 0, 0, 0, 1],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "6",
+    "code": 54,
+    "pattern": [1, 0, 1, 0, 0],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "7",
+    "code": 55,
+    "pattern": [0, 1, 0, 1, 0],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "8",
+    "code": 56,
+    "pattern": [0, 0, 1, 0, 1],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "9",
+    "code": 57,
+    "pattern": [0, 0, 0, 1, 1],
+    "taps": 1,
+    "switchMode": true
+  },
+  {
+    "key": "0",
+    "code": 48,
+    "pattern": [0, 1, 1, 1, 1],
+    "taps": 1,
+    "switchMode": true
+  }
+]
