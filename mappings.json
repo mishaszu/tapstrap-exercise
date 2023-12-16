@@ -1,5 +1,12 @@
 [
   {
+    "key": "space",
+    "code": 32,
+    "pattern": [1, 1, 1, 1, 1],
+    "taps": 1,
+    "switchMode": false
+  },
+  {
     "key": "a",
     "code": 97,
     "pattern": [1, 0, 0, 0, 0],
@@ -189,80 +196,107 @@
     "switchMode": false
   },
   {
-    "key": "space",
-    "code": 32,
-    "pattern": [1, 1, 1, 1, 1],
-    "taps": 1,
-    "switchMode": false
-  },
-  {
     "key": "1",
     "code": 49,
     "pattern": [1, 0, 0, 0, 0],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "2",
     "code": 50,
     "pattern": [0, 1, 0, 0, 0],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "3",
     "code": 51,
     "pattern": [0, 0, 1, 0, 0],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "4",
     "code": 52,
     "pattern": [0, 0, 0, 1, 0],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "5",
     "code": 53,
     "pattern": [0, 0, 0, 0, 1],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "6",
     "code": 54,
     "pattern": [1, 0, 1, 0, 0],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "7",
     "code": 55,
     "pattern": [0, 1, 0, 1, 0],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "8",
     "code": 56,
     "pattern": [0, 0, 1, 0, 1],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "9",
     "code": 57,
     "pattern": [0, 0, 0, 1, 1],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
   },
   {
     "key": "0",
     "code": 48,
     "pattern": [0, 1, 1, 1, 1],
     "taps": 1,
-    "switchMode": true
+    "switchMode": true,
+    "numeric": true
+  },
+  {
+    "key": "Escape",
+    "code": 27,
+    "pattern": [1, 0, 0, 0, 0],
+    "taps": 2,
+    "switchMode": false
+  },
+  {
+    "key": ".",
+    "name": "dot",
+    "code": 190,
+    "pattern": [0, 1, 0, 0, 0],
+    "taps": 2,
+    "switchMode": false,
+    "functional": true
+  },
+  {
+    "key": ":",
+    "code": 186,
+    "pattern": [0, 0, 2, 0, 0],
+    "taps": 2,
+    "switchMode": false,
+    "functional": true
   }
 ]
