@@ -62,11 +62,11 @@ module Fingers = {
     let c4 = value->Js.Array2.unsafe_get(3)
     let c5 = value->Js.Array2.unsafe_get(4)
     <div className="flex">
-      <Circle isOpen={c1 == 0} />
+      <Circle extraMx={true} isOpen={c1 == 0} />
       <Circle isOpen={c2 == 0} />
       <Circle isOpen={c3 == 0} />
       <Circle isOpen={c4 == 0} />
-      <Circle extraMx={true} isOpen={c5 == 0} />
+      <Circle isOpen={c5 == 0} />
     </div>
   }
 }
@@ -160,7 +160,7 @@ let make = () => {
             <p className="mx-12">
               {`${value.key}`->Js.String.toUpperCase->React.string}
               {switch value.name->Js.Undefined.toOption {
-              | Some(v) => `( ${v} )`->React.string
+              | Some(v) => ` ( ${v} )`->React.string
               | None => React.null
               }}
             </p>
