@@ -1,6 +1,8 @@
 @module("./logo.svg") external logo: string = "default"
 %%raw(`import './App.css'`)
 
+@module external img: string = "rodrigo-soares-1UF27kmDDg0-unsplash.jpg"
+
 let s = React.string
 
 type mapping = {
@@ -176,7 +178,13 @@ let make = () => {
   <div className="App h-full">
     <div className="w-full h-1/2 bg-gray-100 flex items-center justify-center text-2xl">
       {switch playArr->Js.Array2.length {
-      | 0 => <> {"You're completed! Press space to start again!"->React.string} </>
+      | 0 =>
+        <div className="flex h-full flex-col items-center justify-center flex-start">
+          <p className="flex mx-12 h-2/3 text-center items-center align-center shrink-0">
+            {"You're completed! Press space to start again!"->React.string}
+          </p>
+          <div className="h-12 my-2" />
+        </div>
       | _ =>
         switch current {
         | Some(value) =>
@@ -199,10 +207,14 @@ let make = () => {
             }}
           </div>
         | None =>
-          <>
-            <p className="mx-12"> {"Press space to start"->React.string} </p>
-            <Fingers value={space.pattern} />
-          </>
+          <div className="flex h-full flex-col items-center justify-center flex-start">
+            <p className="flex mx-12 h-2/3 text-center items-center align-center shrink-0">
+              {"Press space to start"->React.string}
+            </p>
+            <div className="h-12 my-2">
+              <Fingers value={space.pattern} />
+            </div>
+          </div>
         }
       }}
     </div>
@@ -211,7 +223,10 @@ let make = () => {
       <div className="w-full h-8 bg-gray-100 flex items-center justify-center text-xs">
         {`Last key: ${value}`->React.string}
       </div>
-    | None => React.null
+    | None =>
+      <div className="w-full h-8 bg-gray-100 flex items-center justify-center">
+        {"Start"->React.string}
+      </div>
     }}
     <label> {"Modes:"->s} </label>
     <select
