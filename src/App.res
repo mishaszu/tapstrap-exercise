@@ -173,15 +173,15 @@ let make = () => {
     Some(_ => window->removeEventListener("keydown", keypress))
   }, [keypress])
 
-  <div className="App">
-    <div className="w-full h-64 bg-gray-100 flex items-center justify-center text-2xl">
+  <div className="App h-full">
+    <div className="w-full h-1/2 bg-gray-100 flex items-center justify-center text-2xl">
       {switch playArr->Js.Array2.length {
       | 0 => <> {"You're completed! Press space to start again!"->React.string} </>
       | _ =>
         switch current {
         | Some(value) =>
-          <>
-            <p className="mx-12">
+          <div className="flex h-full flex-col items-center justify-center flex-start">
+            <p className="flex mx-12 h-2/3 text-center items-center align-center shrink-0">
               {`${value.key}`->Js.String.toUpperCase->React.string}
               {switch value.name->Js.Undefined.toOption {
               | Some(v) => ` ( ${v} )`->React.string
@@ -189,15 +189,15 @@ let make = () => {
               }}
             </p>
             {switch hidden {
-            | true => React.null
+            | true => <div className="h-12 my-2" />
             | false =>
-              <>
+              <div className="h-12 m-0 my-2 flex shrink-1">
                 <Fingers value={value.pattern} />
                 {value.taps > 1 ? `x${value.taps->Belt.Int.toString}`->React.string : React.null}
                 {value.switchMode ? "Switch mode"->React.string : React.null}
-              </>
+              </div>
             }}
-          </>
+          </div>
         | None =>
           <>
             <p className="mx-12"> {"Press space to start"->React.string} </p>
