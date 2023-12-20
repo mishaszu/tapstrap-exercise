@@ -142,7 +142,7 @@
   {
     "key": "b",
     "code": 98,
-    "pattern": [1, 1, 1, 0, 1],
+    "pattern": [0, 1, 0, 1, 1],
     "taps": 1,
     "switchMode": false
   },
@@ -163,7 +163,7 @@
   {
     "key": "x",
     "code": 120,
-    "pattern": [0, 1, 0, 1, 1],
+    "pattern": [1, 1, 1, 0, 1],
     "taps": 1,
     "switchMode": false
   },
