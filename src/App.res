@@ -12,6 +12,7 @@ type mapping = {
   name: Js.undefined<string>,
   numeric: Js.undefined<bool>,
   functional: Js.undefined<bool>,
+  special: Js.undefined<bool>,
 }
 
 @module("../mappings.json") external mappings: array<mapping> = "default"
@@ -71,7 +72,12 @@ module Fingers = {
   }
 }
 
-type mode = All | Numeric | Functional
+type mode =
+  | All
+  | Alphabetical
+  | Numeric
+  | Functional
+  | Special
 
 @react.component
 let make = () => {
@@ -80,10 +86,23 @@ let make = () => {
   let (current, setCurrent) = React.useState(_ => None)
   let (hidden, setHidden) = React.useState(_ => false)
   let (mode, setMode) = React.useState(_ => All)
+  let (lastKey, setLastKey) = React.useState(_ => None)
+  let (showSwitch, setShowSwitch) = React.useState(_ => false)
+  let (showAll, setShowAll) = React.useState(_ => false)
+  let (searchAll, setSearchAll) = React.useState(_ => "")
 
   React.useEffect1(() => {
     switch mode {
     | All => setStarterArr(_ => mappings)
+    | Alphabetical =>
+      setStarterArr(_ =>
+        mappings->Js.Array2.filter(
+          value =>
+            value.numeric->Js.Undefined.toOption != Some(true) &&
+            value.functional->Js.Undefined.toOption != Some(true) &&
+            value.special->Js.Undefined.toOption != Some(true),
+        )
+      )
     | Numeric =>
       setStarterArr(_ =>
         mappings->Js.Array2.filter(value => value.numeric->Js.Undefined.toOption == Some(true))
@@ -91,6 +110,10 @@ let make = () => {
     | Functional =>
       setStarterArr(_ =>
         mappings->Js.Array2.filter(value => value.functional->Js.Undefined.toOption == Some(true))
+      )
+    | Special =>
+      setStarterArr(_ =>
+        mappings->Js.Array2.filter(value => value.special->Js.Undefined.toOption == Some(true))
       )
     }
 
@@ -101,7 +124,7 @@ let make = () => {
   React.useEffect1(() => {
     let id = setTimeout(() => {
       setHidden(_ => false)
-    }, 5000)
+    }, 3000)
 
     Some(_ => clearTimeout(id))
   }, [current])
@@ -142,6 +165,7 @@ let make = () => {
       }
     | _ => Js.log("Not match!")
     }
+    setLastKey(_ => Some(key))
   }, (current, setCurrent, playArr, setPlayArr, starterArr))
 
   React.useEffect1(() => {
@@ -182,25 +206,139 @@ let make = () => {
         }
       }}
     </div>
+    {switch lastKey {
+    | Some(value) =>
+      <div className="w-full h-8 bg-gray-100 flex items-center justify-center text-xs">
+        {`Last key: ${value}`->React.string}
+      </div>
+    | None => React.null
+    }}
     <label> {"Modes:"->s} </label>
     <select
+      className="mx-4 p-1 border-2 border-gray-500"
       name="Mode"
       onChange={e => {
         let value = ReactEvent.Form.currentTarget(e)["value"]
         switch value {
         | "All" => setMode(_ => All)
+        | "Alphabetical" => setMode(_ => Alphabetical)
         | "Functional" => setMode(_ => Functional)
         | "Numeric" => setMode(_ => Numeric)
-        | _ => Js.log("Not match!")
+        | "Special" => setMode(_ => Special)
+        | _ => Js.log("Not a mode")
         }
       }}>
       <option value="All"> {"All"->s} </option>
+      <option value="Alphabetical"> {"Alphabetical"->s} </option>
       <option value="Functional"> {"Functional"->s} </option>
       <option value="Numeric"> {"Numeric"->s} </option>
+      <option value="Special"> {"Special"->s} </option>
     </select>
-    <div className="flex justify-center items-center my-24">
-      {"Switch Mode:"->s}
-      <Fingers value={[0, 0, 1, 1, 1]} />
-    </div>
+    <button className="mx-4" onClick={e => setShowSwitch(old => !old)}>
+      {"Show Switch Mode"->s}
+    </button>
+    <button className="mx-4" onClick={e => setShowAll(old => !old)}> {"Show All"->s} </button>
+    {showAll
+      ? <input
+          className=" mx-4 p-1 border-2 border-gray-500"
+          type_="text"
+          value={searchAll}
+          placeholder="Search all"
+          onChange={e => {
+            let value = ReactEvent.Form.currentTarget(e)["value"]
+            setSearchAll(_ => value)
+          }}
+        />
+      : React.null}
+    {showSwitch
+      ? <div>
+          <div className="flex justify-center items-center my-24">
+            {"Switch Mode:"->s}
+            <Fingers value={[0, 0, 1, 1, 1]} />
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"Shift Mode:"->s}
+            <Fingers value={[1, 1, 1, 0, 0]} />
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"Turn off:"->s}
+            <Fingers value={[0, 0, 0, 1, 0]} />
+            {`x3`->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"Vim visual"->s}
+            <Fingers value={[1, 0, 1, 1, 0]} />
+            {`x2`->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"CTRL + C"->s}
+            <Fingers value={[0, 1, 0, 1, 1]} />
+            {"Switch mode"->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"CTRL + A"->s}
+            <Fingers value={[1, 1, 0, 1, 0]} />
+            {"Switch mode"->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"CTRL + V"->s}
+            <Fingers value={[0, 1, 1, 0, 1]} />
+            {"Switch mode"->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"Tab"->s}
+            <Fingers value={[1, 1, 1, 1, 0]} />
+            {"Switch mode"->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"ESC"->s}
+            <Fingers value={[1, 1, 0, 0, 1]} />
+            {"Switch mode"->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"Arrow left"->s}
+            <Fingers value={[1, 1, 0, 0, 0]} />
+            {"Switch mode"->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"Arrow right"->s}
+            <Fingers value={[0, 1, 1, 0, 0]} />
+            {"Switch mode"->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"Arrow up"->s}
+            <Fingers value={[0, 0, 1, 1, 0]} />
+            {"Switch mode"->React.string}
+          </div>
+          <div className="flex justify-center items-center my-24">
+            {"Arrow down"->s}
+            <Fingers value={[0, 1, 0, 0, 1]} />
+            {"Switch mode"->React.string}
+          </div>
+        </div>
+      : React.null}
+    {showAll
+      ? <div className="flex flex-col gap gap-4 justify-center items-center mt-8">
+          {starterArr
+          ->Js.Array2.filter(value => {
+            let search = searchAll->Js.String.toLowerCase
+            let key = value.key->Js.String.toLowerCase
+            if search == "" {
+              true
+            } else {
+              Js.String.includes(key, search)
+            }
+          })
+          ->Js.Array2.map(value => {
+            <div className="flex">
+              <p className="w-8 mr-8"> {`${value.key}`->Js.String.toUpperCase->React.string} </p>
+              <Fingers value={value.pattern} />
+              {value.taps > 1 ? `x${value.taps->Belt.Int.toString}`->React.string : React.null}
+              {value.switchMode ? "Switch mode"->React.string : React.null}
+            </div>
+          })
+          ->React.array}
+        </div>
+      : React.null}
   </div>
 }
