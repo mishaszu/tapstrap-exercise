@@ -272,6 +272,10 @@ let make = () => {
             <Fingers value={[0, 0, 1, 1, 1]} />
           </div>
           <div className="flex justify-center items-center my-24">
+            {"Change mapping (Switch Mode):"->s}
+            <Fingers value={[1, 0, 1, 1, 1]} />
+          </div>
+          <div className="flex justify-center items-center my-24">
             {"Shift Mode:"->s}
             <Fingers value={[1, 1, 1, 0, 0]} />
           </div>

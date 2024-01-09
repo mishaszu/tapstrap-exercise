@@ -487,5 +487,21 @@
     "taps": 3,
     "switchMode": false,
     "functional": true
+  },
+  {
+    "key": "$",
+    "code": 187,
+    "pattern": [0, 1, 1, 1, 0],
+    "taps": 2,
+    "switchMode": false,
+    "functional": true
+  },
+  {
+    "key": "%",
+    "code": 187,
+    "pattern": [0, 1, 0, 0, 1],
+    "taps": 3,
+    "switchMode": false,
+    "functional": true
   }
 ]
